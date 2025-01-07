@@ -1,0 +1,49 @@
+[package]
+name = "admin"
+version = "0.1.0"
+edition = "2021"
+license = "MPL-2.0"
+authors = ["Niklas Pfister <git@omikron.dev>"]
+description = "Platform to rule all administration tasks"
+
+[dependencies]
+# Async
+tokio = { version = ">=1.23.1", features = ["full"] }
+futures = { version = "~0.3" }
+
+# Cli
+clap = { version = "~4", features = ["derive"] }
+
+# DB
+rorm = { version = "*", branch = "dev", git = "https://github.com/rorm-orm/rorm", default-features = false, features = ["cli", "uuid", "postgres-only"] }
+linkme = { version = "~0.3" }
+ipnetwork = { version = "~0.21", features = ["serde"] }
+
+# Error management
+thiserror = { version = "~2" }
+
+# Serialization
+serde = { version = "~1", features = ["derive"] }
+serde_json = { version = "~1" }
+time = { version = "~0.3", features = ["serde-human-readable"] }
+uuid = { version = "~1", features = ["v4"] }
+base32 = { version = "~0.5" }
+strum = { version = "~0.26" }
+
+# Tracing
+tracing = { version = "~0.1" }
+tracing-subscriber = { version = "~0.3" }
+
+# Webserver
+galvyn = { path = "../../galvyn/galvyn" }
+rand = { version = "~0.8" }
+
+# Security
+openidconnect = { version = "~3" }
+webauthn-rs = { version = "~0.5", features = ["danger-allow-state-serialisation"] }
+totp-rs = { version = "~5" }
+argon2 = { version = "~0.5", features = ["std"] }
+
+[features]
+dev = []
+
